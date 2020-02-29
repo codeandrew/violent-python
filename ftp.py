@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 import socket
 
-port = 21
-banner = "FreeFloat FTP Server"
-print("[+] Checking for {} on port {}".format(banner, str(port)))
-
 port_list = [21, 22, 25, 80, 110, 443]
 port_open = True
 
@@ -16,13 +12,25 @@ services = {
     'http': 80
 }
 
-socket.setdefaulttimeout(2)
-s = socket.socket()
+def retBanner(ip, port):
+    try: 
+        socket.setdefaulttimeout(2)
+        s = socket.socket()
+        s.connect((ip, port))
+        banner = s.recv(1024)
+        return banner
+    except:
+        return
 
-ip = "192.168.95.148"
-s.connect((ip, services.ftp))
+def main():
+    ip1 = '192.168.95.148'
+    ip2 = '192.168.95.149'
+    port = 21
 
-answer = s.recv(1024)
+    banner1 = retBanner(ip1, port)
+    if banner1: print("[+] {} : {}".format(ip1, banner1))
+    if banner2: print("[+] {} : {}".format(ip2, banner2))
 
-print(answer)
 
+if __name == '__main__':
+    main()
