@@ -20,7 +20,7 @@ def checkVulns(banner, filename):
         if line.strip('\n') in banner:
             print('[+] Server is vulnerable: {}'.format(banner.strip('\n')))
 
-def main():
+def get_argument():
     if len(sys.argv) == 2:
         filename = sys.argv[1]
         if not os.path.isfile(filename):
@@ -30,7 +30,13 @@ def main():
             print('[-] {} access denied.'.format(filename))
             exit(0)
         print("[+] Reading Vulnerabilities From: {}".format(filename))
+        return filename
     else:
+        print("[-] Usage: {} <vulnerable file banner>".format(sys.argv[0]))
+        exit(0)
+
+def main():
+        filename = get_argument()
         port_list = [21, 22, 25, 80, 110, 443]
         for x in range(1, 255):
             ip = '192.168.100.{}'.format(str(x))
