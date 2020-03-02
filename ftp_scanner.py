@@ -9,11 +9,10 @@ if len(sys.argv) == 2:
     if not os.path.isfile(filename):
         print('[-] {} does not exist.'.format(filename))
         exit(0)
-    if not os.access.isfile(filename):
+    if not os.access(filename, os.R_OK):
         print('[-] {} access denied.'.format(filename))
         exit(0)
     print("[+] Reading Vulnerabilities From: {}".format(filename))
-
 
 
 
