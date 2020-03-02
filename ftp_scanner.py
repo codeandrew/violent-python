@@ -2,9 +2,16 @@
 # -*- coding: utf-8 -*-
 import socket
 import sys
+import os
 
 if len(sys.argv) == 2:
     filename = sys.argv[1]
+    if not os.path.isfile(filename):
+        print('[-] {} does not exist.'.format(filename))
+        exit(0)
+    if not os.access.isfile(filename):
+        print('[-] {} access denied.'.format(filename))
+        exit(0)
     print("[+] Reading Vulnerabilities From: {}".format(filename))
 
 
