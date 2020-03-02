@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import socket
+import sys
+
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+    print("[+] Reading Vulnerabilities From: {}".format(filename))
+
+
+
 
 def retBanner(ip, port):
     try: 
