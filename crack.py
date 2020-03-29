@@ -1,4 +1,5 @@
 import crypt
+# CHAPTER 1 p22
 
 def testPass(cryptPass):
     salt = cryptPass[0:2]
